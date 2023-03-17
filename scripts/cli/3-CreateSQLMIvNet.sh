@@ -1,27 +1,4 @@
-# SQL Managed Instance Deployment Checklist
-
-This GitHub repo contains a Checklist and sample Scripts for enterprise SQL Managed Instance deployments
-
-Possible involved Roles: 
-
-- AADAdmin
-- NetworkAdmin
-- DatabaseAdmin
-- EngineeringOpsAdmin
-- EngineeringOps
-
-
-### AADAdmin Creates a Managed Identity – see: 
-a.	[Manage user-assigned managed identities](https://learn.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azp)
-
-Create a user-assigned managed identity in a Resource group
-
-![uami](3-CreateSQLMIvNet.sh)
-
-
-
-```
-#!/bin/bash
+﻿#!/bin/bash
 
 # Create an Azure SQL Managed Instance virtual network
 
@@ -61,6 +38,3 @@ az network route-table route create --address-prefix 10.198.0.0/25 --name "ToLoc
 
 echo "Configuring $subnet with $nsg and $route..."
 az network vnet subnet update --name $subnet --network-security-group $nsg --route-table $route --vnet-name $vNet --resource-group $resourceGroup 
-
-
-```
