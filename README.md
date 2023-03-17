@@ -38,6 +38,7 @@ EngineeringOpsAdmin Creates Resource group for SQL MI vNet (if not already exist
 
 ![smicontributor](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/smicontributor.png)
 
+
 ### NetworkAdmin creates SQL MI network resources in the SQL MI vNet Resource group 
 
 Use a Azure CLI script [3-CreateSQLMIvNet.sh](https://github.com/DataSnowman/sqlmideployment/blob/main/scripts/cli/3-CreateSQLMIvNet.sh) or (PowerShell, portal, etc.) similar to this:
@@ -86,7 +87,25 @@ az network vnet subnet update --name $subnet --network-security-group $nsg --rou
 
 ```
 
-[Configuring Private Endpoint Connections in Azure SQL Managed Instance](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-238-configuring-private-endpoint-connections-in/ba-p/3635128)
+### DatabaseAdmin provides a CLI script to the EngineeringOps to create SQL MI network instance in the SQL MI instance Resource group
 
+Use a Azure CLI script [4-CreateSQLMIinstance.sh](https://github.com/DataSnowman/sqlmideployment/blob/main/scripts/cli/4-CreateSQLMIinstance.sh) or (PowerShell, portal, etc.) 
 
 [Create an Azure SQL Managed Instance with a user-assigned managed identity](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/authentication-azure-ad-user-assigned-managed-identity-create-managed-instance?view=azuresql&tabs=azure-cli)
+
+
+### Configure a Private Endpoint in the Azure SQL Managed Instance
+
+[Configuring Private Endpoint Connections in Azure SQL Managed Instance](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-238-configuring-private-endpoint-connections-in/ba-p/3635128)
+
+### Create a CNAME Record in your DNS using Private Endpoint static IP
+
+`Note not necessary step if you are using Azure DNS`
+
+If you have a custom DNS maintained in a product like Infoblox you will need to use the Private Endpoint created above to create a CNAME record with a static IP.
+
+### To avoid needing a Global Admin from always enabling the creation of a 
+
+![aadadmin](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/aadadmin.png)
+
+`To be updated, enhanced, and validated in coming weeks`
