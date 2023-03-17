@@ -16,9 +16,19 @@ a.	[Manage user-assigned managed identities](https://learn.microsoft.com/en-us/a
 
 Create a user-assigned managed identity in a Resource group
 
-![uami](3-CreateSQLMIvNet.sh)
+![uami](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/managedidentity.png)
 
+### EngineeringOpsAdmin Creates Resource groups
 
+EngineeringOpsAdmin Creates Resource group for SQL MI vNet (if not already exists) and Resource group to SQL MI instance (if not already exists)
+
+- EngineeringOpsAdmin adds a role assignment of “SQL Managed Instance Contributor” in the SQL MI vNet Resource group and selects the EngineeringOps user performing the deployment
+- EngineeringOpsAdmin adds a role assignment of “Contributor” in the SQL MI vNet Resource group and selects the NetworkAdmin user performing the vNet deployment
+- EngineeringOpsAdmin adds a role assignment of “SQL Managed Instance Contributor” in the SQL MI instance Resource group and selects the EngineeringOps user performing the deployment
+
+### NetworkAdmin creates SQL MI network resources in the SQL MI vNet Resource group 
+
+Use a Azure CLI script [3-CreateSQLMIvNet.sh](https://github.com/DataSnowman/sqlmideployment/blob/main/scripts/cli/3-CreateSQLMIvNet.sh) or (PowerShell, portal, etc.) similar to this:
 
 ```
 #!/bin/bash
