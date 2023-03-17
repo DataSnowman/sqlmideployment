@@ -22,9 +22,21 @@ Create a user-assigned managed identity in a Resource group
 
 EngineeringOpsAdmin Creates Resource group for SQL MI vNet (if not already exists) and Resource group to SQL MI instance (if not already exists)
 
+`Note I use a single user for all role assignment but these would typically be different users`
+
 - EngineeringOpsAdmin adds a role assignment of “SQL Managed Instance Contributor” in the SQL MI vNet Resource group and selects the EngineeringOps user performing the deployment
-- EngineeringOpsAdmin adds a role assignment of “Contributor” in the SQL MI vNet Resource group and selects the NetworkAdmin user performing the vNet deployment
+
+![smicontributor](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/smicontributor.png)
+
+- EngineeringOpsAdmin adds a role assignment of “Contributor” or maybe "Network Contributor" in the SQL MI vNet Resource group and selects the NetworkAdmin user performing the vNet deployment
+
+![contributor](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/contributor.png)
+
+![netcontributor](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/netcontributor.png)
+
 - EngineeringOpsAdmin adds a role assignment of “SQL Managed Instance Contributor” in the SQL MI instance Resource group and selects the EngineeringOps user performing the deployment
+
+![smicontributor](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/smicontributor.png)
 
 ### NetworkAdmin creates SQL MI network resources in the SQL MI vNet Resource group 
 
@@ -72,5 +84,9 @@ az network route-table route create --address-prefix 10.198.0.0/25 --name "ToLoc
 echo "Configuring $subnet with $nsg and $route..."
 az network vnet subnet update --name $subnet --network-security-group $nsg --route-table $route --vnet-name $vNet --resource-group $resourceGroup 
 
-
 ```
+
+[Configuring Private Endpoint Connections in Azure SQL Managed Instance](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-238-configuring-private-endpoint-connections-in/ba-p/3635128)
+
+
+[Create an Azure SQL Managed Instance with a user-assigned managed identity](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/authentication-azure-ad-user-assigned-managed-identity-create-managed-instance?view=azuresql&tabs=azure-cli)
