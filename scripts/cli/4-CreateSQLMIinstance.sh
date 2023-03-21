@@ -12,7 +12,7 @@ subnet="DevelopmentSQLMIsubnetTest3"
 instance="sqlmitest3"
 login="adminuser"
 password="Astr0ng15charP@ssword"
-subscriptionId="64d4eefe-0709-4fbd-850d-178d5f8e7c51"
+subscriptionId="<subscriptionId>"
 
 
 echo "Using resource group $resourceGroup with login: $login, password: $password..."
@@ -31,4 +31,4 @@ echo "Using resource group $resourceGroup with login: $login, password: $passwor
 
 # NOTE THIS SCRIPT NEEDS SOME WORK but works in CLI cut and pasted into CMD (Does not work as a bash shell)
 
-az sql mi create -g DevContosoAzureEastUSsqlmiTest3 -n sqlmitest3 -l eastus -i -u adminuser -p Astr0ng15charP@ssword --license-type BasePrice --subnet /subscriptions/64d4eefe-0709-4fbd-850d-178d5f8e7c51/resourceGroups/ContosoAzureEastUSsqlmiVNetTest3/providers/Microsoft.Network/virtualNetworks/ContosoAzureEastUSsqlmiVNetTest3/subnets/DevelopmentSQLMIsubnetTest3 --capacity 4 --storage 32GB --edition GeneralPurpose --family Gen5 --tags Environment=DevelopmentSQLMI
+az sql mi create -g DevContosoAzureEastUSsqlmiTest3 -n sqlmitest3 -l eastus -i -u adminuser -p Astr0ng15charP@ssword --license-type BasePrice --subnet /subscriptions/<subscriptionId>/resourceGroups/ContosoAzureEastUSsqlmiVNetTest3/providers/Microsoft.Network/virtualNetworks/ContosoAzureEastUSsqlmiVNetTest3/subnets/DevelopmentSQLMIsubnetTest3 --capacity 4 --storage 32GB --edition GeneralPurpose --family Gen5 --tags Environment=DevelopmentSQLMI
