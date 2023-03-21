@@ -98,7 +98,9 @@ NOTE THIS SCRIPT NEEDS SOME WORK but works in CLI cut and pasted into CMD (It do
 az sql mi create -g DevContosoAzureEastUSsqlmiTest3 -n sqlmitest3 -l eastus -i -u adminuser -p Astr0ng15charP@ssword --license-type BasePrice --subnet /subscriptions/<subscriptionIDHere>/resourceGroups/ContosoAzureEastUSsqlmiVNetTest3/providers/Microsoft.Network/virtualNetworks/ContosoAzureEastUSsqlmiVNetTest3/subnets/DevelopmentSQLMIsubnetTest3 --capacity 4 --storage 32GB --edition GeneralPurpose --family Gen5 --tags Environment=DevelopmentSQLMI
 ```
 
-The SQL MI deployment should create a Virtual Cluster in the SQL MI vNet Resource group (i.e. ContosoAzureEastUSsqlmiVNetTest3)
+The SQL MI deployment should create a Virtual Cluster in the SQL MI vNet Resource group (i.e. ContosoAzureEastUSsqlmiVNetTest3) 
+
+`Note: the Virtual Cluster is only viewable by higher permissioned users and neither the “SQL Managed Instance Contributor” nor “Network Contributor” can see the Virtual Cluster`
 
 ![virtualCluster](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/virtualCluster.png)
 
