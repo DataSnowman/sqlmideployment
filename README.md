@@ -22,7 +22,7 @@ Create a user-assigned managed identity in a Resource group
 
 EngineeringOpsAdmin Creates Resource group for SQL MI vNet (if not already exists) and Resource group to SQL MI instance (if not already exists)
 
-- EngineeringOpsAdmin adds a role assignment of “SQL Managed Instance Contributor” in the SQL MI vNet Resource group (i.e. ContosoAzureEastUSsqlmiVNetTest3ContosoAzureEastUSsqlmiVNetTest3) and selects the EngineeringOps user performing the deployment
+- EngineeringOpsAdmin adds a role assignment of “SQL Managed Instance Contributor” in the SQL MI vNet Resource group (i.e. ContosoAzureEastUSsqlmiVNetTest3) and selects the EngineeringOps user performing the deployment
 
 ![smicontributor](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/smicontributor.png)
 
@@ -97,6 +97,15 @@ NOTE THIS SCRIPT NEEDS SOME WORK but works in CLI cut and pasted into CMD (It do
 ```
 az sql mi create -g DevContosoAzureEastUSsqlmiTest3 -n sqlmitest3 -l eastus -i -u adminuser -p Astr0ng15charP@ssword --license-type BasePrice --subnet /subscriptions/<subscriptionIDHere>/resourceGroups/ContosoAzureEastUSsqlmiVNetTest3/providers/Microsoft.Network/virtualNetworks/ContosoAzureEastUSsqlmiVNetTest3/subnets/DevelopmentSQLMIsubnetTest3 --capacity 4 --storage 32GB --edition GeneralPurpose --family Gen5 --tags Environment=DevelopmentSQLMI
 ```
+
+The SQL MI deployment should create a Virtual Cluster in the SQL MI vNet Resource group (i.e. ContosoAzureEastUSsqlmiVNetTest3)
+
+![virtualCluster](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/virtualCluster.png)
+
+The SQL MI instance Resource group (i.e. DevContosoAzureEastUSsqlmiTest3) should look like this:
+
+![sqlMIinstance](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/sqlMIinstance.png)
+
 
 ## fix from here
 
