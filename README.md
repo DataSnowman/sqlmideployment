@@ -10,14 +10,6 @@ Possible involved Roles:
 - EngineeringOpsAdmin
 - EngineeringOps
 
-
-### AADAdmin Creates a Managed Identity – see: 
-a.	[Manage user-assigned managed identities](https://learn.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azp)
-
-Create a user-assigned managed identity in a Resource group
-
-![uami](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/managedidentity.png)
-
 ### EngineeringOpsAdmin Creates Resource groups
 
 EngineeringOpsAdmin Creates Resource group for SQL MI vNet (if not already exists) and Resource group to SQL MI instance (if not already exists)
@@ -108,6 +100,25 @@ The SQL MI instance Resource group (i.e. DevContosoAzureEastUSsqlmiTest3) should
 
 ![sqlMIinstance](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/sqlMIinstance.png)
 
+Note that given the role assignments provided above, the Azure Portal can also be used to deploy a SQL MI instance
+
+![basicPortal](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/basicPortal.png)
+
+![networkingPortal](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/networkingPortal.png)
+
+![securityPortal](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/securityPortal.png)
+
+![additionalPortal](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/additionalPortal.png)
+
+![tagsPortal](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/tagsPortal.png)
+
+![reviewcreatePortal](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/reviewcreatePortal.png)
+
+
+`Note deploying via the portal creates the same Virutal Cluster`
+
+![virtualClusterPortal](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/virtualClusterPortal.png)
+
 
 ## fix from here
 
@@ -129,3 +140,10 @@ If you have a custom DNS maintained in a product like Infoblox you will need to 
 ![aadadmin](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/aadadmin.png)
 
 `To be updated, enhanced, and validated in coming weeks`
+
+### AADAdmin Creates a Managed Identity – see: 
+a.	[Manage user-assigned managed identities](https://learn.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azp)
+
+Create a user-assigned managed identity in a Resource group
+
+![uami](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/managedidentity.png)
