@@ -22,19 +22,15 @@ Create a user-assigned managed identity in a Resource group
 
 EngineeringOpsAdmin Creates Resource group for SQL MI vNet (if not already exists) and Resource group to SQL MI instance (if not already exists)
 
-`Note I use a single user for all role assignment but these would typically be different users`
-
-- EngineeringOpsAdmin adds a role assignment of “SQL Managed Instance Contributor” in the SQL MI vNet Resource group and selects the EngineeringOps user performing the deployment
+- EngineeringOpsAdmin adds a role assignment of “SQL Managed Instance Contributor” in the SQL MI vNet Resource group (i.e. ContosoAzureEastUSsqlmiVNetTest3ContosoAzureEastUSsqlmiVNetTest3) and selects the EngineeringOps user performing the deployment
 
 ![smicontributor](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/smicontributor.png)
 
-- EngineeringOpsAdmin adds a role assignment of “Contributor” or maybe "Network Contributor" in the SQL MI vNet Resource group and selects the NetworkAdmin user performing the vNet deployment
-
-![contributor](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/contributor.png)
+- EngineeringOpsAdmin adds a role assignment of "Network Contributor" in the SQL MI vNet Resource group (i.e. ContosoAzureEastUSsqlmiVNetTest3ContosoAzureEastUSsqlmiVNetTest3) and selects the NetworkAdmin user performing the vNet deployment
 
 ![netcontributor](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/netcontributor.png)
 
-- EngineeringOpsAdmin adds a role assignment of “SQL Managed Instance Contributor” in the SQL MI instance Resource group and selects the EngineeringOps user performing the deployment
+- EngineeringOpsAdmin adds a role assignment of “SQL Managed Instance Contributor” in the SQL MI instance Resource group (i.e. DevContosoAzureEastUSsqlmiTest3) and selects the EngineeringOps user performing the deployment
 
 ![smicontributor](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/smicontributor.png)
 
@@ -87,9 +83,22 @@ az network vnet subnet update --name $subnet --network-security-group $nsg --rou
 
 ```
 
-### DatabaseAdmin provides a CLI script to the EngineeringOps to create SQL MI network instance in the SQL MI instance Resource group
+Once the Network deploys the resources for SQL Managed Instance it should look like this: 
+
+![ContosoAzureEastUSsqlmiVNetTest3](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/ContosoAzureEastUSsqlmiVNetTest3rg.png)
+
+
+### DatabaseAdmin provides a CLI script to the EngineeringOps to create SQL MI instance in the SQL MI instance Resource group
 
 Use a Azure CLI script [4-CreateSQLMIinstance.sh](https://github.com/DataSnowman/sqlmideployment/blob/main/scripts/cli/4-CreateSQLMIinstance.sh) or (PowerShell, portal, etc.) 
+
+NOTE THIS SCRIPT NEEDS SOME WORK but works in CLI cut and pasted into CMD (It does not work as a bash shell currently)
+
+```
+az sql mi create -g DevContosoAzureEastUSsqlmiTest3 -n sqlmitest3 -l eastus -i -u adminuser -p Astr0ng15charP@ssword --license-type BasePrice --subnet /subscriptions/<subscriptionIDHere>/resourceGroups/ContosoAzureEastUSsqlmiVNetTest3/providers/Microsoft.Network/virtualNetworks/ContosoAzureEastUSsqlmiVNetTest3/subnets/DevelopmentSQLMIsubnetTest3 --capacity 4 --storage 32GB --edition GeneralPurpose --family Gen5 --tags Environment=DevelopmentSQLMI
+```
+
+## fix from here
 
 [Create an Azure SQL Managed Instance with a user-assigned managed identity](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/authentication-azure-ad-user-assigned-managed-identity-create-managed-instance?view=azuresql&tabs=azure-cli)
 
