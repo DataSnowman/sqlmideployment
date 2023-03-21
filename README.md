@@ -102,7 +102,7 @@ The SQL MI instance Resource group (i.e. DevContosoAzureEastUSsqlmiTest3) should
 
 Note that given the role assignments provided above, the Azure Portal can also be used to deploy a SQL MI instance
 
-![basicPortal](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/basicPortal.png)
+![basicsPortal](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/basicsPortal.png)
 
 ![networkingPortal](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/networkingPortal.png)
 
