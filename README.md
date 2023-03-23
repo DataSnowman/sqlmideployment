@@ -120,14 +120,100 @@ Note that given the role assignments provided above, the Azure Portal can also b
 ![virtualClusterPortal](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/virtualClusterPortal.png)
 
 
+### Configure a Private Endpoint in the Azure SQL Managed Instance
+
+Here are a couple of links on configuring a Private Endpoint in the Azure SQL Managed Instance
+
+[Configuring Private Endpoint Connections in Azure SQL Managed Instance](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-238-configuring-private-endpoint-connections-in/ba-p/3635128)
+
+[Azure Private Link for Azure SQL Managed Instance (Preview)](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/private-endpoint-overview?view=azuresql&tabs=separate-vnets)
+
+EngineeringOpsAdmin Creates Resource group for SQL MI vNet for a Private endpoint (if not already exists) Something like ContosoAzureEastUSsqlmiVNetTest4ForPrivateEndpoint and a second RG for the private endpoint like ContosoAzureEastUSsqlmiTest4PrivateEndpoint
+
+EngineeringOpsAdmin adds a role assignment of "Network Contributor" in the SQL MI vNet for a Private Endpoint Resource group (i.e. ContosoAzureEastUSsqlmiVNetTest4ForPrivateEndpoint) and selects the NetworkAdmin user performing the vNet deployment. 
+
+EngineeringOpsAdmin adds a role assignment of "SQL Managed Instance Contributor" in the SQL MI vNet for a Private Endpoint Resource group (i.e. ContosoAzureEastUSsqlmiVNetTest4ForPrivateEndpoint) and selects the EngineeringOps user performing the Private endpoint deployment. 
+
+EngineeringOpsAdmin also adds a role assignment of "SQL Managed Instance Contributor" to the RG for the Private endpoint (i.e.ContosoAzureEastUSsqlmiTest4PrivateEndpoint) and selects the EngineeringOps user performing the Private endpoint deployment.  
+
+The NetworkAdmin deploys a vNet into the assigned RG
+
+![privateEndpointvNet](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/privateEndpointvNet.png)
+
+The EngineeringOps user deploys a private endpoint into the assigned RG
+
+In the SQL MI instance choose Private endpoint connections and click + Private endpoint
+
+![connectionsPrivateEndpointt](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/connectionsPrivateEndpoint.png)
+
+![basicsPrivateEndpoint](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/basicsPrivateEndpoint.png)
+
+The resource is autopopulated
+
+![resourcePrivateEndpoint](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/resourcePrivateEndpoint.png)
+
+Choose the vNet and subnet created by the Network Admin
+
+![vNetPrivateEndpoint](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/vNetPrivateEndpoint.png)
+
+As you could see the DNS configuration is disabled for Managed Instance and we are going to configure it later
+
+![dnsPrivateEndpoint](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/dnsPrivateEndpoint.png)
+
+Finish with any tags and click on Next: Review + create
+
+With the "SQL Managed Instance Contributor" permissions I get this error:
+
+![createErrorPrivateEndpoint](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/createErrorPrivateEndpoint.png)
+
+When I run the same create private enpoint with a higher privelege user there is a Target Sub-resource item on the Resource section.  The error could step from this
+
+![resourceTargetSub-resourcePrivateEndpoint](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/resourceTargetSub-resourcePrivateEndpoint.png)
+
+The Virtual Network also has a Name and Private IP attribute that is not in the portal with "SQL Managed Instance Contributor" permission but is with higher privelege user
+
+![vNetPrivateStaticIPprivateIPEndpoint](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/vNetPrivateStaticIPprivateIPEndpoint.png)
+
+
+Here is what it should look like with higher permisssions (to be determined)
+
+![highbasicsPrivateEndpoint](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/highbasicsPrivateEndpoint.png)
+
+The resource is autopopulated
+
+![highresourcePrivateEndpoint](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/highresourcePrivateEndpoint.png)
+
+Choose the vNet and subnet created by the Network Admin
+
+![highvNetPrivateEndpoint](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/highvNetPrivateEndpoint.png)
+
+As you could see the DNS configuration is disabled for Managed Instance and we are going to configure it later
+
+![highdnsPrivateEndpoint](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/highdnsPrivateEndpoint.png)
+
+Finish with any tags and click on Next: Review + create
+
+This time it works.  Click Create
+
+![highcreatePrivateEndpoint](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/highcreatePrivateEndpoint.png)
+
+Here are the resources that are deployed
+
+![privateEndpointResources](https://raw.githubusercontent.com/DataSnowman/sqlmideployment/main/images/privateEndpointResources.png)
+
+[Review and approve a request to create a private endpoint](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/private-endpoint-overview?view=azuresql&tabs=same-vnet#review-and-approve-a-request-to-create-a-private-endpoint)
+
+Mine was auto-approved based on the user I used
+
+[Set up domain name resolution for private endpoint](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/private-endpoint-overview?view=azuresql&tabs=same-vnet#set-up-domain-name-resolution-for-private-endpoint)
+
+
+
+
 ## fix from here
 
 [Create an Azure SQL Managed Instance with a user-assigned managed identity](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/authentication-azure-ad-user-assigned-managed-identity-create-managed-instance?view=azuresql&tabs=azure-cli)
 
-
-### Configure a Private Endpoint in the Azure SQL Managed Instance
-
-[Configuring Private Endpoint Connections in Azure SQL Managed Instance](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-238-configuring-private-endpoint-connections-in/ba-p/3635128)
 
 ### Create a CNAME Record in your DNS using Private Endpoint static IP
 
