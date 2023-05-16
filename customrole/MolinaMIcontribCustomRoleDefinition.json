@@ -1,0 +1,61 @@
+{
+    "properties": {
+        "roleName": "Molina MI Contributor",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/64d4eefe-0709-4fbd-850d-178d5f8e7c51"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.ResourceHealth/availabilityStatuses/read",
+                    "Microsoft.Resources/deployments/*",
+                    "Microsoft.Resources/subscriptions/resourceGroups/read",
+                    "Microsoft.Network/networkSecurityGroups/*",
+                    "Microsoft.Network/routeTables/*",
+                    "Microsoft.Sql/locations/*/read",
+                    "Microsoft.Sql/locations/instanceFailoverGroups/*",
+                    "Microsoft.Sql/managedInstances/*",
+                    "Microsoft.Support/*",
+                    "Microsoft.Network/virtualNetworks/subnets/*",
+                    "Microsoft.Network/virtualNetworks/*",
+                    "Microsoft.Authorization/*/read",
+                    "Microsoft.Insights/alertRules/*",
+                    "Microsoft.Insights/metrics/read",
+                    "Microsoft.Insights/metricDefinitions/read"
+                ],
+                "notActions": [
+                    "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/delete",
+                    "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/write",
+                    "Microsoft.Network/networkSecurityGroups/delete",
+                    "Microsoft.Network/networkSecurityGroups/securityRules/delete",
+                    "Microsoft.Network/networkSecurityPerimeters/delete",
+                    "Microsoft.Network/networkSecurityPerimeters/backingResourceAssociations/delete",
+                    "Microsoft.Network/networkSecurityPerimeters/links/delete",
+                    "Microsoft.Network/networkSecurityPerimeters/linkReferences/delete",
+                    "Microsoft.Network/networkSecurityPerimeters/profiles/delete",
+                    "Microsoft.Network/networkSecurityPerimeters/profiles/accessRules/delete",
+                    "Microsoft.Network/networkSecurityPerimeters/resourceAssociations/delete",
+                    "Microsoft.Network/networkSecurityPerimeters/resourceAssociationProxies/delete",
+                    "Microsoft.Network/virtualHubs/routeTables/delete",
+                    "Microsoft.Network/virtualHubs/hubRouteTables/delete",
+                    "Microsoft.Network/routeTables/delete",
+                    "Microsoft.Network/routeTables/routes/delete",
+                    "Microsoft.Network/virtualNetworks/delete",
+                    "Microsoft.Network/virtualNetworks/taggedTrafficConsumers/delete",
+                    "Microsoft.Network/virtualNetworks/virtualNetworkPeerings/delete",
+                    "Microsoft.Network/virtualNetworks/remoteVirtualNetworkPeeringProxies/delete",
+                    "Microsoft.Network/virtualNetworks/subnets/delete",
+                    "Microsoft.Network/virtualNetworks/subnets/contextualServiceEndpointPolicies/delete",
+                    "Microsoft.Network/virtualNetworks/subnets/resourceNavigationLinks/delete",
+                    "Microsoft.Network/virtualNetworks/subnets/serviceAssociationLinks/delete",
+                    "Microsoft.Resources/deployments/delete",
+                    "Microsoft.Resources/deploymentScripts/delete",
+                    "Microsoft.Sql/managedInstances/delete"
+                ],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}
