@@ -37,11 +37,11 @@ variable "storage_size_in_gb" {
 variable "administrator_login" {
   type        = string
   description = "Enter admin login"
-  default     = "miadmin"
+  default     = "darwin"
 }
 
 variable "administrator_login_password" {
   type        = string
   description = "Enter admin password"
-  default     = "P@ssw0rd1234"
+  default     = "The$80ChampSnowman"
 }
