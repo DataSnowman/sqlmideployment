@@ -1,6 +1,6 @@
 ﻿variable "mi_rg" {
   type        = string
-  description = "Enter vNet resource group name"
+  description = "Enter SMI MI resource group name"
   default     = "devsqlmirg3"
 }
 
