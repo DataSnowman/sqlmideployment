@@ -1,6 +1,6 @@
 ﻿variable "mi_rg" {
   type        = string
-  description = "Enter SMI MI resource group name"
+  description = "Enter SQL MI resource group name"
   default     = "devsqlmirg3"
 }
 
